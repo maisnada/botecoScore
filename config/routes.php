@@ -4,6 +4,6 @@ use BotecoScore\Controller\Estatistica\Buscar;
 use BotecoScore\Controller\Home;
 
 return [
-    '/home' => Home::class,
+    '' => Home::class,
     '/estatistica' => Buscar::class
 ];
