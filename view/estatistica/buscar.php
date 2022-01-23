@@ -1,16 +1,16 @@
-<div class="col-md-12">
+<div class="col-12">
 
     <p class="secao">
-        <span style="background-color: #fff; color: #000; padding: 6px 6px;;"> <i class="fas fa-chart-line fa-lg"></i> Estatística da Partida
+        <span style="background-color: #fff; color: #000; padding: 6px 6px;"> <i class="fas fa-chart-line fa-lg"></i> Estatísticas da Partida
     </p>
 
     <?php if ($estatistica) : ?>
 
         <?php foreach ($estatistica->getValores()["Jogo"] as $data) : ?>
 
-            <div class="row">
+            <div class="row" style="margin-top:15px;">
 
-                <div class="col-md-12">
+                <div class="col-12">
 
                     <p style="margin-bottom: 4px;"><?= $data["titulo"]; ?> <?= $data["titulo"] === 'Posse de bola' ? '(%)' : '' ?></p>
 
@@ -31,7 +31,7 @@
 
     <?php if (!$estatistica) : ?>
 
-        <p style="margin-bottom: 10px;">Não disponíveis no momento ; [ ... Tente mais tarde!</p>
+        <p style="margin-top:15px;">Não disponíveis no momento ; [ ... Tente mais tarde!</p>
 
     <?php endif ?>
 

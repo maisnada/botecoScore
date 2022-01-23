@@ -87,7 +87,7 @@
                         <div class="col-5 d-block d-md-none" style="margin-top: 15px;">
 
                             <img src="<?= $partida->getTimeDaCasa()->getEscudo(); ?>" class="img-thumbnail" style="background: transparent;border: 0;" />
-                            <p style="margin-top:5px; font-size: .9em;"><?= $partida->getTimeDaCasa()->getNomeCompleto(); ?></p>
+                            <p style="font-size: .9em;"><?= $partida->getTimeDaCasa()->getNomeCompleto(); ?></p>
                         </div>
 
                         <div class="col-2 d-block d-md-none placar" style="margin-top: 10px;">
@@ -98,7 +98,7 @@
 
                         <div class="col-5 d-block d-md-none" style="margin-top: 10px;">
                             <img src="<?= $partida->getTimeVisitante()->getEscudo(); ?>" class="img-thumbnail" style="background: transparent;border: 0;" />
-                            <p style="margin-top:4px; font-size: .9em;"><?= $partida->getTimeVisitante()->getNomeCompleto(); ?></p>
+                            <p style="font-size: .9em;"><?= $partida->getTimeVisitante()->getNomeCompleto(); ?></p>
                         </div>
 
                         <div class="col-5 d-block d-md-none placar" style="margin-top: 10px;">
@@ -120,7 +120,7 @@
                         </div>
 
                         <!-- md -->
-                        <div class="col-md-4 text-center d-none d-md-block" style="margin-top: 20px;">
+                        <div class="col-md-4 text-center d-none d-md-block" style="margin-top: 25px;">
 
                             <img src="<?= $partida->getTimeDaCasa()->getEscudo(); ?>" style="width:100px;" />
 
@@ -128,13 +128,13 @@
 
                         </div>
 
-                        <div class="col-md-4 d-none d-md-block text-center placar">
+                        <div class="col-md-4 d-none d-md-block text-center placar" style="margin-top: 15px;">
 
-                            <p style="margin-top: 10px;"><?= $partida->getPlacar()->getPontoDaCasa() ?> x <?= $partida->getPlacar()->getPontoDoVisitante() ?></p>
+                            <p style="margin-top: 30px;"><?= $partida->getPlacar()->getPontoDaCasa() ?> x <?= $partida->getPlacar()->getPontoDoVisitante() ?></p>
 
                         </div>
 
-                        <div class="col-md-4 d-none d-md-block text-center">
+                        <div class="col-md-4 d-none d-md-block text-center" style="margin-top: 25px;">
 
                             <img src="<?= $partida->getTimeVisitante()->getEscudo(); ?>" style="width:100px;" />
                             <p style="margin-bottom: 0;"><?= $partida->getTimeVisitante()->getNomeCompleto(); ?></p>
@@ -143,17 +143,9 @@
                     </div>
 
 
-
-
-                    <!--   <div class="row" style="margin: 30px 0;">
-
-                       
-
-                    </div> -->
-
                     <div class="row hide" id="cam_load_<?= $partida->getId(); ?>">
                         <div class="col-md-12 text-center">
-                            <img src="../../assets/img/loading.gif" style="width: 60px; margin-bottom: 15px;" />
+                            <img src="../../assets/img/loading.gif" style="width: 60px; margin: 20px; 0" />
                         </div>
                     </div>
 

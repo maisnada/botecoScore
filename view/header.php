@@ -8,7 +8,7 @@ $nome = 'BotecoScore';
 <html lang="pt-br">
 
 <head>
-    <!-- v1.0.1 -->
+    <!-- v1.0.2 -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BotecoScore</title>
