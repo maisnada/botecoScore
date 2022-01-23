@@ -7,7 +7,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $routes = require __DIR__ . '/../config/routes.php';
 
-$caminho = $_SERVER['PATH_INFO'];
+$caminho = rtrim($_SERVER['PATH_INFO'], '/');
 
 if (!array_key_exists($caminho, $routes)) {
 

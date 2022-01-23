@@ -41,16 +41,12 @@ class ApiProxy implements ApiInterface
 
         if ($this->cache->isCached($keyResource)) {
 
-            // echo $keyResource . ' - Cache' . PHP_EOL;
-
             return $this->cache->get($keyResource);
         }
 
         try {
 
             $json = $this->api->sendRequest($method, $resource, $param);
-
-            // echo $keyResource . ' - Req';
 
             $this->cache->save($keyResource, $json);
 

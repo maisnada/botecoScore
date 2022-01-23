@@ -2,23 +2,28 @@
 
 namespace BotecoScore\Infra\Api;
 
-
-use Exception;
-
-use RuntimeException;
-use GuzzleHttp\Client;
 use BotecoScore\Infra\Api\ApiInterface;
+use Dotenv\Dotenv;
+use Exception;
+use GuzzleHttp\Client;
+use RuntimeException;
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../../../');
+$dotenv->load();
 
 class FlashScore implements ApiInterface
 {
-    private string $baseUrl = 'https://flashscore.p.rapidapi.com/v1';
-    private array $header = [
-        'x-rapidapi-host' => 'flashscore.p.rapidapi.com',
-        'x-rapidapi-key' => 'e66299dea8msha5cf24ed0fd8edbp1db7e4jsn68c78ac2a5d7'
-    ];
+    private string $baseUrl;
+    private array $header;
 
     public function __construct()
     {
+
+        $this->baseUrl = $_ENV['BASE_URL'];
+        $this->header = [
+            'x-rapidapi-host' => $_ENV['HOST_HEADER'],
+            'x-rapidapi-key' => $_ENV['KEY_HEADER']
+        ];
     }
 
     public function sendRequest(string $method = "GET", string $resource, array $param = array()): ?string
