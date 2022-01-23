@@ -1,3 +1,53 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/**/
 
 @font-face {
     font-family: Roboto;
@@ -11,7 +61,8 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #DCDCDC;
+    background-color: #696969;
+    color: #fff;
 }
 
 .hide {
@@ -27,60 +78,72 @@ body {
 .banner {
 
    background-image: url(../img/backgroudjumb.jpg);
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: #464646;
+   background-position: center top;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
 
 }
 
-h1 {
-    font-family: 'Allerta Stencil', cursive;
+.banner h1 {
+    font-family: 'Allerta Stencil', cursive;  
+    text-align: center;  
+    font-size: 3em;
 }
 
 h2 {
     font-family: 'Allerta Stencil', sans-serif;
-    font-size: 2.5em;
-    margin-top: 30px;
-
+    font-size: 2em;
+    margin: 35px 0;
+    text-align: center;
 }
 
 h3 {
-    /* font-family: 'Allerta Stencil', sans-serif; */
-    font-size: 1.8em;
+    font-size: 1.8em;   
 }
 
-.titulo {
-    background-color: #000;
-    color: #fff;
-    padding: 5px 0 8px 0;
-    margin-top: 30px;
-
+.titulo {  
+    background-color: #000;         
+    
+    padding: 15px 0;
+    -webkit-box-shadow: 0px 0px 15px -4px #000000; 
+    box-shadow: 0px 0px 15px -4px #000000;
+  
 }
 
-.detalhe {
-    background-color: #fff;
-    color: #000;
-    padding: 4px 4px;
-    font-size: .7em;
-    margin-top: 5px;
+.detalhe {    
+    display: inline-block;
+    margin-top: 10px; 
+    font-size: .7em;    
 }
 
 p {
-    font-size: 1.2em;
+    font-size: 1.2em;    
 }
 
 .partida {
-    padding: 30px 0 0 0;
-    border-bottom: 1px dotted #000;
+    padding: 20px 0 ;     
+}
+
+.partida a{
+    color: #fff;
+}
+
+.partida p{
+   line-height: 1.5em;     
+}
+
+.quebra{
+    border-bottom: 1px dotted #999;
 }
 
 .placar {
     font-family: 'Allerta Stencil', cursive;
+    text-align: center;
 }
 
 .placar p {
+    line-height: 1em;
     font-size: 5em;
     margin: 0;
 }
@@ -96,14 +159,23 @@ p {
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
 
-    .titulo {
-        padding: 5px 0;
+    h2 {
+        font-family: 'Allerta Stencil', sans-serif;
+        font-size: 2.5em;
+        margin: 60px 0 30px 0;
+    
     }
 
-    .detalhe {
-        padding: 4px 4px;
-        font-size: .8em;
-        margin-top: 10px;
+    .titulo { 
+       
+        margin-top: 30px;
+        padding: 15px 0; 
+    }
+    
+    .detalhe {          
+        display: inline-block;
+        margin-top: 8px;  
+        font-size: .9em;    
     }
 
     .partida {

@@ -1,14 +1,14 @@
 <div class="col-md-12">
 
     <p class="secao">
-        <span style="background-color: #fff; color: #000; padding: 6px 6px; font-weight: bold;"> <i class="fas fa-chart-line fa-lg"></i> Estatísticas da Partida
+        <span style="background-color: #fff; color: #000; padding: 6px 6px;;"> <i class="fas fa-chart-line fa-lg"></i> Estatística da Partida
     </p>
 
     <?php if ($estatistica) : ?>
 
         <?php foreach ($estatistica->getValores()["Jogo"] as $data) : ?>
 
-            <div class="row" style="margin-bottom: 20px;">
+            <div class="row">
 
                 <div class="col-md-12">
 

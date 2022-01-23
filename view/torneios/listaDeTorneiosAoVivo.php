@@ -3,7 +3,7 @@
 
 <div class="row">
 
-    <div class="col-md-12">
+    <div class="col-12">
 
         <?php foreach ($torneios as $torneio) : ?>
 
@@ -12,13 +12,13 @@
                 <div class="col-sm-12 d-block d-md-none">
 
                     <h3 style="margin:0; padding: 0;"><?= $torneio->getNomeAbreviado(); ?></h3>
-                    <p style="margin: 5px 0 0 0;">
-                        <span class="detalhe"><?= $torneio->getPais(); ?>
-                    </p>
+
+                    <span class="detalhe"><i class="fas fa-chevron-right"></i> <?= $torneio->getPais(); ?>
 
                 </div>
 
                 <!-- md -->
+
                 <div class="col-md-8 d-none d-md-block ">
 
                     <h3 style="margin:0; padding: 0;"><?= $torneio->getNomeAbreviado(); ?></h3>
@@ -27,17 +27,16 @@
 
                 <div class="col-md-4 d-none d-md-block text-right">
 
-                    <p style="margin:0; padding-top: 2px;">
-                        <span class="detalhe"><?= $torneio->getPais(); ?>
-                    </p>
+                    <span class="detalhe"><?= $torneio->getPais(); ?> <i class="fas fa-chevron-left"></i></span>
 
                 </div>
 
+
             </div>
 
-            <?php foreach ($torneio->getPartidas() as $partida) : ?>
+            <?php foreach ($torneio->getPartidas() as $index => $partida) : ?>
 
-                <div class="partida">
+                <div class="partida <?= $index !== array_key_last($torneio->getPartidas()) ? 'quebra' : '' ?>">
 
                     <!-- partida -->
                     <div class="row">
@@ -48,11 +47,11 @@
                             <div class="row">
 
                                 <div class="col-6 ">
-                                    <p style="color:red; margin-bottom: 4px;"><i class="fas fa-video "></i> <?= $partida->getStatus(); ?></p>
-                                    <p><i class="far fa-clock "></i> <?= $partida->getTempo(); ?></p>
+                                    <p style="margin-bottom: 4px;"><i class="fas fa-video fa-sm"></i> <?= $partida->getStatus(); ?></p>
+                                    <p><i class="far fa-clock fa-sm"></i> <?= $partida->getTempo(); ?></p>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <p><i class="fas fa-chart-line"></i> <a href="#" class="btn_estatistica" data-id="<?= $partida->getId(); ?>" title="Estatísticas">Estatísticas</a></p>
+                                    <p><i class="fas fa-chart-line fa-sm"></i> <a href="#" class="btn_estatistica" data-id="<?= $partida->getId(); ?>" title="Estatísticas">Estatísticas</a></p>
 
                                 </div>
                             </div>
@@ -62,7 +61,7 @@
                         <!-- md -->
                         <div class="col-md-12 d-none d-md-block">
 
-                            <span style="padding: 10px 20px 0 0; color:red">
+                            <span style="padding: 10px 20px 0 0;">
 
                                 <p style="display: inline-block;"><i class="fas fa-video fa-lg"></i> <?= $partida->getStatus(); ?></p>
 
@@ -85,7 +84,7 @@
                     <div class="row text-center">
 
                         <!-- sm -->
-                        <div class="col-5 d-block d-md-none" style="margin-top: 10px;">
+                        <div class="col-5 d-block d-md-none" style="margin-top: 15px;">
 
                             <img src="<?= $partida->getTimeDaCasa()->getEscudo(); ?>" class="img-thumbnail" style="background: transparent;border: 0;" />
                             <p style="margin-top:5px; font-size: .9em;"><?= $partida->getTimeDaCasa()->getNomeCompleto(); ?></p>
@@ -99,29 +98,29 @@
 
                         <div class="col-5 d-block d-md-none" style="margin-top: 10px;">
                             <img src="<?= $partida->getTimeVisitante()->getEscudo(); ?>" class="img-thumbnail" style="background: transparent;border: 0;" />
-                            <p style="margin-top:5px; font-size: .9em;"><?= $partida->getTimeVisitante()->getNomeCompleto(); ?></p>
+                            <p style="margin-top:4px; font-size: .9em;"><?= $partida->getTimeVisitante()->getNomeCompleto(); ?></p>
                         </div>
 
-                        <div class="col-5 d-block d-md-none placar">
+                        <div class="col-5 d-block d-md-none placar" style="margin-top: 10px;">
 
                             <p><?= $partida->getPlacar()->getPontoDaCasa() ?></p>
 
                         </div>
 
-                        <div class="col-2 d-block d-md-none placar">
+                        <div class="col-2 d-block d-md-none placar" style="margin-top: 10px;">
 
                             <p></p>
 
                         </div>
 
-                        <div class="col-5 d-block d-md-none placar">
+                        <div class="col-5 d-block d-md-none placar" style="margin-top: 10px;">
 
                             <p><?= $partida->getPlacar()->getPontoDoVisitante() ?></p>
 
                         </div>
 
-                        <!-- sm 66666-->
-                        <div class="col-md-4 text-center d-none d-md-block" style="margin-top: 15px;">
+                        <!-- md -->
+                        <div class="col-md-4 text-center d-none d-md-block" style="margin-top: 20px;">
 
                             <img src="<?= $partida->getTimeDaCasa()->getEscudo(); ?>" style="width:100px;" />
 
