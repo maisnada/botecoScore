@@ -1,3 +1,4 @@
 .env
 vendor
-*.lock
+composer.lock
+env.sh

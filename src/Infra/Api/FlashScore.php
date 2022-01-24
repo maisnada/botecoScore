@@ -3,13 +3,10 @@
 namespace BotecoScore\Infra\Api;
 
 use BotecoScore\Infra\Api\ApiInterface;
-use Dotenv\Dotenv;
 use Exception;
 use GuzzleHttp\Client;
 use RuntimeException;
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../../../');
-$dotenv->load();
 
 class FlashScore implements ApiInterface
 {
@@ -19,10 +16,10 @@ class FlashScore implements ApiInterface
     public function __construct()
     {
 
-        $this->baseUrl = $_ENV['BASE_URL'];
+        $this->baseUrl = getenv('BASE_URL');
         $this->header = [
-            'x-rapidapi-host' => $_ENV['HOST_HEADER'],
-            'x-rapidapi-key' => $_ENV['KEY_HEADER']
+            'x-rapidapi-host' => getenv('HOST_HEADER'),
+            'x-rapidapi-key' => getenv('KEY_HEADER')
         ];
     }
 

@@ -2,11 +2,7 @@
 
 namespace BotecoScore\Infra\Cache;
 
-use Dotenv\Dotenv;
 use Predis\Client;
-
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../../../');
-$dotenv->load();
 
 class ConnectionFactory
 {
@@ -14,9 +10,9 @@ class ConnectionFactory
     {
 
         return new Client([
-            'host' => $_ENV['REDIS_HOST'],
-            'port' => $_ENV['REDIS_PORT'],
-            'password' => $_ENV['REDIS_PASSWORD'],
+            'host' => getenv('REDIS_HOST'),
+            'port' => getenv('REDIS_PORT'),
+            'password' => getenv('REDIS_PASSWORD'),
         ]);
     }
 }
