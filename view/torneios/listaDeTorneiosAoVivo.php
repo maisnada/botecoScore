@@ -9,8 +9,8 @@
 
             <div class="card text-center" style="background: transparent; border:0">
                 <div class="card-body" style="padding: 10px 0">
-                    <a href="javascript:void(0)" onclick="handleClick(this)" data-id="torneiro_<?= $torneio->getId(); ?>" style="border:0; text-decoration: none;"><img src="<?= $torneio->getLogo(); ?>" class="img-thumbnail" style="background: transparent;border: 0;" />
-                        <p class="card-title" style="font-size: .7em; line-height: 1.3em; margin-top: 5px;"><?= $torneio->getNomeAbreviado(); ?></p>
+                    <a href="javascript:void(0)" onclick="handleClick(this)" data-id="torneiro_<?= $torneio->getId(); ?>" style="border:0; text-decoration: none; color:#fff !important;"><img src="<?= $torneio->getLogo(); ?>" class="img-thumbnail" style="background: transparent;border: 0;" />
+                        <p class="card-title" style="font-size: .8em; line-height: 1.3em; margin-top: 5px;"><?= $torneio->getNomeAbreviado(); ?></p>
                     </a>
                 </div>
             </div>
@@ -24,7 +24,7 @@
 
                 <div class="card-body" style="padding: 10px 0">
                     <a href="javascript:void(0)" onclick="handleClick(this)" data-id="torneiro_<?= $torneio->getId(); ?>" style="border:0; text-decoration: none;"><img src="<?= $torneio->getLogo(); ?>" class="img-thumbnail" style="background: transparent;border: 0;" />
-                        <p class="card-title" style="font-size: .7em; line-height: 1.3em; margin-top: 5px;"><?= $torneio->getNomeAbreviado(); ?></p>
+                        <p class="card-title" style="font-size: .8em; line-height: 1.3em; margin-top: 5px;"><?= $torneio->getNomeAbreviado(); ?></p>
                     </a>
                 </div>
             </div>
