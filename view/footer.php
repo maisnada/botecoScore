@@ -61,8 +61,17 @@ async function sendRequest(id){
 	if(response.ok)
 		return data;
 
-	throw new Error("a");
+	throw new Error();
 	
+}
+
+function handleClick(event){
+
+	console.log(event.getAttribute("data-id"));
+
+	elmnt = document.getElementById(event.getAttribute("data-id"));
+
+	elmnt.scrollIntoView({block: "start", behavior: "smooth"});
 }
 
 </script>

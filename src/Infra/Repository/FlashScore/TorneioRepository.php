@@ -33,9 +33,18 @@ class TorneioRepository implements TorneioRepositoryInterface
         return $this->hydrateList($json);
     }
 
-    public function listaDeTorneiosDoDia(): array
+    public function proximosEventos(): array
     {
-        return [];
+        $query = [
+            "sport_id" => 1,
+            "timezone" => -3,
+            "locale" => "pt_BR",
+            "indent_days" => 0
+        ];
+
+        $json = $this->api->sendRequest("GET", "events/list", $query);
+
+        return $this->hydrateList($json);
     }
 
     public function getById(string $id): Torneio|null
@@ -64,7 +73,10 @@ class TorneioRepository implements TorneioRepositoryInterface
                 $torneioData["TOURNAMENT_ID"],
                 $torneioData["NAME"],
                 $torneioData["SHORT_NAME"],
-                $torneioData["COUNTRY_NAME"]
+                $torneioData["COUNTRY_NAME"],
+                $torneioData["TOURNAMENT_STAGE_ID"],
+                $torneioData["TOURNAMENT_SEASON_ID"],
+                $torneioData["TOURNAMENT_IMAGE"]
             );
 
             foreach ($torneioData["EVENTS"] as $partidaData) {
@@ -90,14 +102,19 @@ class TorneioRepository implements TorneioRepositoryInterface
                     Translate::get($partidaData["STAGE_TYPE"])
                 );
 
-                $partida->getPlacar()->addPontoParaCasa($partidaData["HOME_SCORE_CURRENT"]);
-                $partida->getPlacar()->addPontoParaVisitante($partidaData["AWAY_SCORE_CURRENT"]);
+                if ($this->isPlacarDefinido($partidaData)) {
+
+                    $partida->getPlacar()->addPontoParaCasa($partidaData["HOME_SCORE_CURRENT"]);
+                    $partida->getPlacar()->addPontoParaVisitante($partidaData["AWAY_SCORE_CURRENT"]);
+                }
 
                 $torneio->addPartida($partida);
             }
 
             $torneios[] = $torneio;
         }
+
+        $torneios;
 
         return $torneios;
     }
@@ -134,5 +151,18 @@ class TorneioRepository implements TorneioRepositoryInterface
         $partida->getPlacar()->addPontoParaVisitante($partidaData["AWAY_SCORE_CURRENT"]);
 
         return $partida;
+    }
+
+    private function isPlacarDefinido(array $partidaData): bool
+    {
+
+        if (($partidaData["STAGE_TYPE"] === "FINISHED"
+            && $partidaData["STAGE"] !== "POSTPONED"
+            && $partidaData["STAGE"] !== "CANCELED") || $partidaData["STAGE_TYPE"] === "LIVE") {
+
+            return true;
+        }
+
+        return false;
     }
 }

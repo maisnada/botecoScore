@@ -125,7 +125,11 @@ p {
     padding: 20px 0 ;     
 }
 
-.partida a{
+a {
+    color: #fff;    
+}
+
+a:hover{
     color: #fff;
 }
 

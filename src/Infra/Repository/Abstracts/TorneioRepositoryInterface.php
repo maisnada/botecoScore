@@ -10,7 +10,7 @@ interface TorneioRepositoryInterface
     public function listaDeTorneiosAoVivo(): array;
 
     /**@return Torneio[] */
-    public function listaDeTorneiosDoDia(): array;
+    public function proximosEventos(): array;
 
     public function getById(string $id): Torneio|null;
 }

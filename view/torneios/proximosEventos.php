@@ -1,41 +1,18 @@
-<?php require __DIR__ . '/../header.php'; ?>
+<?php
 
-<div class="row" style="margin-top: 20px;">
+require __DIR__ . '/../header.php';
 
-    <?php foreach ($torneios as $torneio) : ?>
+use DateTimeImmutable;
 
-        <!-- sm -->
-        <div class="col-6 d-block d-md-none">
+$icons = [
+    "Ao vivo" => "<i class=\"fas fa-video\"></i>",
+    "Finalizada" => "<i class=\"far fa-calendar-check\"></i>",
+    "Agendada" => "<i class=\"fas fa-calendar-day\"></i>",
+    "Adiado" => "<i class=\"fas fa-cloud-moon-rain\"></i>",
+    "Cancelado" => "<i class=\"far fa-calendar-times\"></i>"
+];
 
-            <div class="card text-center" style="background: transparent; border:0">
-                <div class="card-body" style="padding: 10px 0">
-                    <a href="javascript:void(0)" onclick="handleClick(this)" data-id="torneiro_<?= $torneio->getId(); ?>" style="border:0; text-decoration: none;"><img src="<?= $torneio->getLogo(); ?>" class="img-thumbnail" style="background: transparent;border: 0;" />
-                        <p class="card-title" style="font-size: .7em; line-height: 1.3em; margin-top: 5px;"><?= $torneio->getNomeAbreviado(); ?></p>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- md -->
-        <div class="col-3 d-none d-md-block">
-
-            <div class="card text-center" style="background: transparent; border: 0;">
-
-                <div class="card-body">
-                    <a href="" style="border:0; text-decoration: none;"><img src="<?= $torneio->getLogo(); ?>" class="img-thumbnail" style="background: transparent;border: 0;" />
-                        <p class="card-title" style="font-size: .7em; line-height: 1.3em; margin-top: 5px;"><?= $torneio->getNomeAbreviado(); ?></p>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-    <?php endforeach; ?>
-
-
-
-</div>
+?>
 
 <div class="row">
 
@@ -43,7 +20,7 @@
 
         <?php foreach ($torneios as $torneio) : ?>
 
-            <div class="row titulo" id="torneiro_<?= $torneio->getId(); ?>">
+            <div class="row titulo">
                 <!-- sm -->
                 <div class="col-sm-12 d-block d-md-none">
 
@@ -72,6 +49,12 @@
 
             <?php foreach ($torneio->getPartidas() as $index => $partida) : ?>
 
+                <?php
+
+                $data = (new DateTimeImmutable())->setTimestamp(intval($partida->getData()));
+
+                ?>
+
                 <div class="partida <?= $index !== array_key_last($torneio->getPartidas()) ? 'quebra' : '' ?>">
 
                     <!-- partida -->
@@ -99,18 +82,18 @@
 
                             <span style="padding: 10px 20px 0 0;">
 
-                                <p style="display: inline-block;"><i class="fas fa-video fa-lg"></i> <?= $partida->getStatus(); ?></p>
+                                <p style="display: inline-block;"><?= array_key_exists($partida->getStatus(), $icons) ? $icons[$partida->getStatus()] : '<i class="fas fa-heart-broken"></i>' ?> <?= $partida->getStatus(); ?></p>
 
                             </span>
 
                             <span style="padding: 10px 20px 0 0;">
 
-                                <p style="display: inline;"><i class="far fa-clock fa-lg"></i> <?= $partida->getTempo(); ?></p>
+                                <p style="display: inline;"><i class="far fa-clock"></i> <?= $data->format('d/m H\hs'); ?></p>
 
                             </span>
 
                             <span style="padding: 10px 20px 0 0;">
-                                <p style="display: inline-block;"><i class="fas fa-chart-line fa-lg"></i> <a href="#" class="btn_estatistica" data-id="<?= $partida->getId(); ?>" title="Estatísticas">Estatística da Partida</a></p>
+                                <p style="display: inline-block;"><i class="fas fa-chart-line "></i> <a href="#" class="btn_estatistica" data-id="<?= $partida->getId(); ?>" title="Estatísticas">Estatística da Partida</a></p>
                             </span>
 
                         </div>
@@ -181,7 +164,7 @@
 
                     <div class="row hide" id="cam_load_<?= $partida->getId(); ?>">
                         <div class="col-md-12 text-center">
-                            <img src="../../assets/img/loading.gif" style="width: 60px; margin: 20px 0;" />
+                            <img src="../../assets/img/loading.gif" style="width: 60px; margin: 20px; 0" />
                         </div>
                     </div>
 

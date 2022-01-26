@@ -14,13 +14,19 @@ class Torneio
     /**@var Partida[] $partidas */
     private array $partidas = [];
     private int $totalDePartidas = 0;
+    private string $estagio;
+    private string $temporada;
+    private string $logo;
 
-    public function __construct(string $id, string $nomeCompleto, string $nomeAbreviado, string $pais)
+    public function __construct(string $id, string $nomeCompleto, string $nomeAbreviado, string $pais, string $estagio, string $temporada, string $logo)
     {
         $this->id = $id;
         $this->nomeCompleto = $nomeCompleto;
         $this->nomeAbreviado = $nomeAbreviado;
         $this->pais = $pais;
+        $this->estagio = $estagio;
+        $this->temporada = $temporada;
+        $this->logo = $logo;
     }
 
     public function getId(): string
@@ -61,5 +67,19 @@ class Torneio
     public function getTotalDePartidas(): int
     {
         return $this->totalDePartidas;
+    }
+    public function getEstagio(): string
+    {
+        return $this->estagio;
+    }
+
+    public function getTemporada(): string
+    {
+        return $this->temporada;
+    }
+
+    public function getLogo(): string
+    {
+        return $this->logo;
     }
 }
