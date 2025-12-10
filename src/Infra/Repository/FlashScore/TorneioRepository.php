@@ -99,7 +99,8 @@ class TorneioRepository implements TorneioRepositoryInterface
                     $timeDaCasa,
                     $timeVisitante,
                     Translate::get($partidaData["STAGE"]),
-                    Translate::get($partidaData["STAGE_TYPE"])
+                    Translate::get($partidaData["STAGE_TYPE"]),
+                    $this->isFinish($partidaData)
                 );
 
                 if ($this->isPlacarDefinido($partidaData)) {
@@ -144,7 +145,8 @@ class TorneioRepository implements TorneioRepositoryInterface
             $timeDaCasa,
             $timeVisitante,
             $partidaData["STAGE"],
-            $partidaData["STAGE_TYPE"]
+            $partidaData["STAGE_TYPE"],
+            $this->isFinish($partidaData)
         );
 
         $partida->getPlacar()->addPontoParaCasa($partidaData["HOME_SCORE_CURRENT"]);
@@ -164,5 +166,10 @@ class TorneioRepository implements TorneioRepositoryInterface
         }
 
         return false;
+    }
+
+    private function isFinish(array $partidaData): bool
+    {
+        return $partidaData["STAGE_TYPE"] === "FINISHED";
     }
 }
