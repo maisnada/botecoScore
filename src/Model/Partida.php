@@ -15,8 +15,9 @@ class Partida
     private Placar $placar;
     private ?Estatistica $estatistica;
     private string $status;
+    private bool $finish;
 
-    public function __construct(string $id, int $data, Time $timeDaCasa, Time $timeVisitante, string $tempo, string $status)
+    public function __construct(string $id, int $data, Time $timeDaCasa, Time $timeVisitante, string $tempo, string $status, bool $finish)
     {
         $this->id = $id;
         $this->data = $data;
@@ -25,6 +26,7 @@ class Partida
         $this->tempo = $tempo;
         $this->placar = new Placar();
         $this->status = $status;
+        $this->finish = $finish;
     }
 
     public function getId(): string
@@ -70,5 +72,10 @@ class Partida
     public function getStatus(): string
     {
         return $this->status;
+    }
+
+    public function isFinish(): bool
+    {
+        return $this->finish;
     }
 }
